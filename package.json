@@ -1,0 +1,38 @@
+{
+  "name": "boba-buddies",
+  "version": "1.0.0",
+  "description": "Finding boba places near you",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/server.js",
+    "build": "webpack -d --watch",
+    "view": "webpack -d --watch | nodemon ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khudiono/Boba-Buddies.git"
+  },
+  "author": "Kelly Hudiono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khudiono/Boba-Buddies/issues"
+  },
+  "homepage": "https://github.com/khudiono/Boba-Buddies#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "compression-webpack-plugin": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
