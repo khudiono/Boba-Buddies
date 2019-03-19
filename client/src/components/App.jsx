@@ -21,11 +21,11 @@ class App extends Component {
   componentDidMount() {
     this.getFavorites()
   }
-
+  
   getFavorites() {
-    axios.get('/favorites')
+    axios.get('/graphql?query={favorites{name,id}}')
       .then( favorites => {
-        this.setState({ favorites: favorites.data })
+        this.setState({ favorites: favorites.data.data.favorites})
       })
       .catch( err => {
         console.log('ERROR: ', err);
