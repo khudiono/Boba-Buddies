@@ -1,54 +1,92 @@
 body {
   font-family: 'Rubik', sans-serif;
-  /* background-color: #EEE2DC; */
-  background-color: #F9FBFD;
+  /* background-color: #F9FBFD; */
+  /* background-color: #E7DFDD; */
+  background-color: #F7F8F2;
 }
 
-h1 {
-  font-family: 'Lilita One', cursive;
-  font-size: 110px;
-  margin-top: -10px;
-  /* color: #123C69; */
+html {
+  scroll-behavior: smooth;
 }
 
-/*  NAV BAR  */
+input:focus {
+  outline: none;
+}
+
+a:hover {
+  cursor: 'pointer';
+}
+
+#app {
+  border: 0px;
+}
+
+.none {
+  display: none;
+}
+
+/* ------------- NAV BAR ------------- */
+
 #nav {
   display: flex;
   flex-direction: row;
   position: fixed;
   top: 0;
-  /* width: 100%; */
-  justify-content: flex-end;
-  margin-right: 100px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #aec6cf;
+  /* background-color: #192a56; */
+  color: white;
+  justify-content: center;
+  z-index: 100;
 }
 
 #nav ul {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 #nav li {
-  list-style: none;
-  padding: 5px 20px 5px 20px;
   font-family: 'Rubik', sans-serif;
   font-weight: 500;
   font-size: 18px;
+  list-style: none;
+  padding: 15px 30px 0px 30px;
+}
+
+#nav a:hover {
+  color: pink;
 }
 
 #nav a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
-/*  HOME PAGE */
+#nav .nav-title {
+  font-family: 'Lilita One', cursive;
+  font-size: 25px;
+  padding: 10px 0px 3px 25px;
+  float: left;
+}
+
+/* ------------- HOME PAGE ------------- */
+
 #home {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 800px;
-  /* background-color: #EEE2DC; */
-  /* border: 1px solid #EEE2DC; */
+  height: 900px;
+}
+
+#home h1 {
+  font-family: 'Lilita One', cursive;
+  font-size: 110px;
+  margin-top: -10px;
 }
 
 #logo {
@@ -56,9 +94,8 @@ h1 {
   width: 400px;
   height: 400px;
   transform: rotate(-5deg);
-  /* position: absolute; */
-  /* transform: translateZ(.25px) scale(.75) translateX(-94%) translateY(-100%) rotate(-5deg); */
 }
+
 #logo-2 {
   display: flex;
   width: 400px;
@@ -68,42 +105,181 @@ h1 {
   transform: rotate(20deg);
 }
 
-
 #home-title {
   display: flex;
   flex-direction: column;
 }
 
-.home-text {
-  font-family: 'Rubik', sans-serif;
-  font-weight: 700;
+#home .home-text {
+  font-family: 'Lilita One', cursive;
+  letter-spacing: 1.6px;
   font-size: 22px;
-  margin-top: -80px;
+  margin-top: -30px;
   text-align: center;
-  color: #788594;
+  color: #192a56;
 }
 
-/* ABOUT PAGE */
+/* ----------- ABOUT PAGE ------------- */
+
 #about {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 800px;
-  background-image: url("../images/Boba-Guys.png");
-  /* background-color: #BAB2B5; */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 600px;
+  width: 100%;
 }
 
-/*  SEARCH PAGE */
-#search {
+#about img {
+  width: 450px;
+  padding-right: 50px;
+}
+
+#about h2 {
+  font-size: 55px;
+  font-family: 'Rubik', sans-serif;
+}
+
+#about p {
+  font-size: 18px;
+}
+
+#about .about-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  padding-left: 50px;
+}
+
+/* ------------- SEARCH PAGE ------------- */
+
+#search {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 800px;
-  /* background-color: #EDC7B7; */
+  justify-content: center;
+  min-height: 500px;
+  padding: 100px 0px 100px 0px;
+}
+
+#search input {
+  font-family: 'Rubik', sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  width: 500px;
+  border-radius: 50px;
+  height: 30px;
+  padding: 5px 15px 5px 25px;
+  border: 0px solid black;
+  background-color: #f1f3f5;
+}
+
+#search i {
+  margin-left: -40px;
+}
+
+#search i:hover {
+  cursor: pointer;
+}
+
+#search .results {
+  float: left;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------- SEARCH CARD ------------- */
+#search-card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 5px 0px 5px 0px;
+}
+
+#search-card .search-card {
+  opacity: 50%;
+  padding: 20px 0px 20px 10px;
+  width: 500px;
+  border-bottom: 1px solid black;
+}
+
+#search-card h5 {
+  margin-bottom: 0px;
+}
+
+#search-card .search-pic {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-pic img {
+  width: 170px;
+  height: 170px;
+  border-radius: 25px;
+}
+
+#search-card .search-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: -85px;
+  padding-left: 10px;
+}
+
+.rating-review img {
+  padding-right: 8px;
+}
+
+#search-card .yelp-logo {
+  width: 30%;
+  margin-left: 180px;
+}
+
+/* ------------- SEARCH RESULTS  ------------- */
+#search-results {
+  padding: 50px 0px 50px 0px;
+}
+
+/* ------------- FEATURED PAGE ------------- */
+#featured {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 250px;
+}
+
+#featured .featured-card {
+  border-radius: 30px;
+  background-color: #DCBFA1;
+  opacity: 50%;
+  padding: 30px 0px 30px 10px;
+  width: 470px;
+}
+
+#featured .featured-pic {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.featured-pic img {
+  width: 200px;
+  height: 200px;
+  border-radius: 25px;
+}
+
+#featured .featured-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
