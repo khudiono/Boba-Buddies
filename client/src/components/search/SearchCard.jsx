@@ -39,8 +39,10 @@ const SearchCard = props => {
           </div>
           <span>{props.info.display_phone}</span>
           <span>{props.info.location.address1}, {props.info.location.city}</span>
-          
-          <a href={props.info.url}><img className="yelp-logo" src="./images/yelp_logo/Screen(R)/Yelp_trademark_RGB.png" /></a>
+          <div className="card-buttons">
+            <div className="add-favorite" onClick={() => props.add(props.info)}><span className="favorite-button-text">favorite </span> <span><i className="fas fa-heart"></i></span> </div>
+            <a href={props.info.url}><img className="yelp-logo" src="./images/yelp_logo/Screen(R)/Yelp_trademark_RGB.png" /></a>
+          </div>
         </div>
       </div>
     </div>

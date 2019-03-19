@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchResults from './SearchResults';
+import NoResult from './NoResult';
 import MapView from './Map';
 import axios from 'axios';
 
@@ -7,9 +8,10 @@ class Search extends Component {
   constructor(props){
     super(props);
     this.state = {
-      places: [{name: 'Happy Lemon', rating: 4.1}, {name: '7 Leaves', rating: 3.5}, {name: 'Milk Sud', rating: 4.5}],
+      places: [],
       location: '',
       search: false,
+      noresult: false,
       info: [],
     }
     this.updateSearch = this.updateSearch.bind(this);
@@ -27,18 +29,23 @@ class Search extends Component {
       })
       .then(() => {
         console.log('places', this.state.places)
-        this.setState({ search: true})
+        this.setState({ noresult: false, search: true})
       })
       .then(() => {
         this.setState({location: ''})
       })
       .catch( err => {
-        console.log('ERROR', err);
+        if(err) {
+          this.setState({ noresult : true})
+        } else {
+          console.log('ERROR', err);
+        }
       })
   }
 
   render() {
-    let results = this.state.search === true ? <SearchResults info={this.state.places} /> : null;
+    let results = this.state.search === true ? <SearchResults info={this.state.places} add={this.props.addFavorite}/> : null;
+    let noResults = this.state.noResult === true ? <NoResult location={this.state.location}/> : null;
     return (
       <div id="search">
         <h2>Find your boba!</h2>
@@ -46,6 +53,7 @@ class Search extends Component {
           <input placeholder="Type a location" value={this.state.location} onChange={this.updateSearch}/>
           <i className="fas fa-search" onClick={this.handleSearch}></i>
         </div>
+        {noResults}
         {results}
       </div>
     )
