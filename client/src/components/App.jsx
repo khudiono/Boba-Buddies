@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Home from './Home';
 import About from './About';
 import Search from './search/Search';
-import Featured from './Featured';
 import Nav from './Nav';
 import axios from 'axios';
 import { ParallaxProvider } from 'react-scroll-parallax';
@@ -36,9 +35,6 @@ class App extends Component {
   addFavorite (info) {
     axios.post('/favorites', info)
       .then( response => {
-        console.log(response, 'adding..');
-      })
-      .then( () => {
         this.getFavorites();
       })
       .catch( err => {
@@ -49,9 +45,6 @@ class App extends Component {
   removeFavorite(id) {
     axios.delete('/favorites', {data: {id: id}})
       .then( result => {
-        console.log(result);
-      })
-      .then( () => {
         this.getFavorites();
       })
       .catch( err => {

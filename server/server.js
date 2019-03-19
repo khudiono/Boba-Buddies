@@ -1,16 +1,20 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const app = express();
 const apiKey = require('../config.js').YelpApiKey;
 const yelp = require('yelp-fusion');
 const client = yelp.client(apiKey);
 const db = require('../db/index.js');
+const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/../public'));
+
+app.get('*.gz', function (req, res, next) {
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 
 app.get('/search', (req,res) => {
   let url = 'https://api.yelp.com/v3/businesses/search';
@@ -61,6 +65,8 @@ app.route('/favorites')
       }
     });
   })
+
+app.use(express.static(__dirname + '/../public'));
 
 const PORT = 3000;
 

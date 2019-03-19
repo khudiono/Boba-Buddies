@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 const Favorite = require('./schema.js').Favorite;
+const db = process.env.MONGODB_URI || 'mongodb://localhost/bobabuddies';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bobabuddies' , (err, result) => {
-  if(err) {
-    console.log('ERROR: ', err);
-  } else {
-    console.log('Successfully conneted to Mongo!')
-  }
-})
+mongoose.connect(db, {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  })
+  .then(() => {
+    console.log('Successfuly connected to Mongo')
+  })
+  .catch( err => {
+    console.log('ERROR: ', err)
+  })
 
 let saveFavorite = (business, cb) => {
   var newFavorite = new Favorite (business);
