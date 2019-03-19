@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
 
 const favoriteSchema = new mongoose.Schema({
-  favorites: {type: Array, default: []}
+  id: {type: String, require: true, unique: true, index:true},
+  name: {type: String, require: true},
+  image_url:String,
+  url: String,
+  review_count: Number,
+  display_phone: String,
+  location: Object,
+  coordinates: Object,
+  rating: Number,
 })
 
 const businessSchema = new mongoose.Schema({
@@ -10,11 +18,9 @@ const businessSchema = new mongoose.Schema({
   image_url:String,
   url: String,
   review_count: Number,
-  address: String,
-  city: String,
-  state: String,
-  phone: String,
-  coordinates: String,
+  display_phone: String,
+  location: Object,
+  coordinates: Object,
   rating: Number,
   title: {type: Number, require: true}
 })
