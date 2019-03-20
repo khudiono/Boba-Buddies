@@ -3,7 +3,7 @@ const FavoriteModel = require('../db/schema.js').Favorite;
 
 const schema = buildSchema(`
     type Favorite {
-      id: String!
+      id: String
       name: String!
       url: String!
       location: Location
@@ -31,7 +31,7 @@ const root = {
       throw new Error('Error')
     }
     return favorites
-  }
+  },
 }
 
 module.exports.schema = schema;

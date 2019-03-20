@@ -48,7 +48,7 @@ class Search extends Component {
     let noResults = this.state.noResult === true ? <NoResult location={this.state.location}/> : null;
     return (
       <div id="search">
-        <h2>Find your boba!</h2>
+        <h2>Search for boba</h2>
         <div className="search-bar">
           <input placeholder="Type a location" value={this.state.location} onChange={this.updateSearch}/>
           <i className="fas fa-search" onClick={this.handleSearch}></i>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Favorite = require('./schema.js').Favorite;
+const Business = require('./schema.js').Business;
 const db = process.env.MONGODB_URI || 'mongodb://localhost/bobabuddies';
 
 mongoose.connect(db, {
@@ -14,7 +15,7 @@ mongoose.connect(db, {
   })
 
 let saveFavorite = (business, cb) => {
-  var newFavorite = new Favorite (business);
+  const newFavorite = new Favorite (business);
   newFavorite.save((err, data) => {
     if(err) {
       console.log(err);

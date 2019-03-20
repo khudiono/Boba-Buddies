@@ -1,16 +1,72 @@
 import React, { Component } from 'react';
 import { googleApiKey } from './config.js';
-// import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
-// import GoogleMapReact from 'google-map-react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 
-const MapView = withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
-  >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
-  </GoogleMap>
-)
+const style = {
+  width: '100%',
+  height: '100%',
+};
 
-export default MapView;
+export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showInfo: true,
+      activeMarker: {},
+      selectedPlace: {}
+    };
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
+  }
+
+  onMapClick(props) {
+    if(this.state.showingInfo) {
+      this.setState({
+        showingInfo: false,
+        activeMarker: null
+      })
+    }
+  }
+
+  onMarkerClick(props, e, marker) {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showInfo: true,
+
+    })
+  }
+
+  render() {
+    let mapCenter = {lat: this.props.places[0].coordinates.latitude,
+      lng: this.props.places[0].coordinates.longitude}
+    return (
+      <div id="map">
+        <Map
+          google={this.props.google}
+          zoom={11}
+          style={style}
+          initialCenter={mapCenter}
+        >
+         {this.props.places.map(place => {
+          return (<Marker key={place.id} position={place.coordinates} />)
+        })}
+        {this.props.places.map( place => {
+          let lat = place.coordinates.latitude;
+          let lng = place.coordinates.longitude;
+          return (
+            <Marker
+              title={place.name}
+              key={place.id}
+              name={place.name}
+              position={{lat, lng}}
+              onClick={this.onMarkerClick}
+            />
+        )})}
+        </Map>
+      </div>
+    )
+  }
+}
+
+export default GoogleApiWrapper({apiKey: googleApiKey})(MapContainer);

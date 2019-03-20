@@ -3,6 +3,7 @@ import Home from './Home';
 import About from './About';
 import Search from './search/Search';
 import Nav from './Nav';
+import Map from './search/Map';
 import axios from 'axios';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
@@ -21,10 +22,11 @@ class App extends Component {
   componentDidMount() {
     this.getFavorites()
   }
-  
+
   getFavorites() {
-    axios.get('/graphql?query={favorites{name,id}}')
+    axios.get('/graphql?query={favorites{name,id,url}}')
       .then( favorites => {
+        console.log(favorites.data.data.favorites)
         this.setState({ favorites: favorites.data.data.favorites})
       })
       .catch( err => {

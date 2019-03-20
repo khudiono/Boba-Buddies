@@ -20,7 +20,7 @@ const Nav = props => {
                 props.favorites.length > 0 ? props.favorites.map(favorite => {
                   return (
                     <div className="favorite-view container dropdown-item" key={favorite.id}>
-                      <div className="col-sm"><span className="favorite-name">{favorite.name}</span></div>
+                      <div className="col-sm"><span className="favorite-name"><a href={favorite.url}>{favorite.name}</a></span></div>
                       <div className="col-sm delete-favorite pull-right">
                         <i className="far fa-trash-alt" onClick={() => props.delete(favorite.id)}></i>
                       </div>

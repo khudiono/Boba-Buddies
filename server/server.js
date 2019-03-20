@@ -30,7 +30,7 @@ app.get('/search', (req,res) => {
   let params = {
     term: 'bubble tea',
     location: req.query.location,
-    limit: 4,
+    limit: 3,
   }
   client.search(params).then( response => {
     return response.jsonBody.businesses;
