@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { googleApiKey } from './config.js';
+import { googleApiKey } from '../../../../config.js';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 
 const style = {
@@ -7,13 +7,21 @@ const style = {
   height: '100%',
 };
 
+const LoadingContainer = (props) => {
+  return (
+    <div className="loading-container">
+      <h2>Loading boba places...</h2>
+    </div>
+  )
+}
+
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showInfo: true,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
     };
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
@@ -39,14 +47,14 @@ export class MapContainer extends Component {
 
   render() {
     let mapCenter = {lat: this.props.places[0].coordinates.latitude,
-      lng: this.props.places[0].coordinates.longitude}
+      lng: this.props.places[0].coordinates.longitude};
     return (
       <div id="map">
         <Map
           google={this.props.google}
           zoom={11}
           style={style}
-          initialCenter={mapCenter}
+          center={mapCenter}
         >
          {this.props.places.map(place => {
           return (<Marker key={place.id} position={place.coordinates} />)
@@ -69,4 +77,6 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({apiKey: googleApiKey})(MapContainer);
+export default GoogleApiWrapper({apiKey: googleApiKey,
+  LoadingContainer: LoadingContainer
+})(MapContainer);
