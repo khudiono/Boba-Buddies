@@ -1,15 +1,18 @@
 # Boba-Buddies
 Boba buddies is a full-stack application for finding boba places near a specified location.
 
-## Setup
+## Development
 From within the root directory:
 
 Download dependencies by running
 ```
+npm install -g webpack
+npm install -g nodemon
 npm install
 ```
 
-Put your Yelp & Google Api Key in config.js (example shown in example-config.js)
+Put your Yelp & Google Api Key in config.js
+> example shown in example-config.js
 
 Run to start node.js server
 ```

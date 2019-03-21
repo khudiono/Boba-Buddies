@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { googleApiKey } from '../../../../config.js';
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 const style = {
   width: '100%',
